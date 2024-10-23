@@ -7,7 +7,7 @@ export default function NotFound (){
         <Link
         to='/'
         >
-        <Button>Go Home</Button>
+        <Button variant='yellow'>Go Home</Button>
         </Link>
 
     </div>

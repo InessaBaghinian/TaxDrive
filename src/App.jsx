@@ -4,11 +4,13 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
+    <div className="flex">
       <Navbar />
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Toaster />
-    </>
+    </div>
   );
 }
 

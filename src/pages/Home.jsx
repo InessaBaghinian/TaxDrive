@@ -2,9 +2,9 @@
 const Home = () => {
   return (
       <div>
-        <p className="text-yellow-500 text-center dark:text-gray-400 ">
+        <h1 className="text-yellow-500 text-center dark:text-gray-400  ">
           Welcome Tax Drive
-        </p>
+        </h1>
       </div>
   );
 };

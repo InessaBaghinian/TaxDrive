@@ -7,7 +7,10 @@ import DriversAddOrEdit from "./Service/pages/drivers/DriversAddOrEdit";
 import Login from "./pages/login/Login";
 import NotFound from "./Service/pages/NotFound";
 import RequireGuest from "./components/RequireGuest";
-import Registration from "./pages/login/Registration"
+import Registration from "./pages/login/Registration";
+import Cars from "./Service/pages/cars/Cars";
+import CarsAddOrEdit from "./Service/pages/Cars/CarsAddOrEdit";
+
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +42,23 @@ export const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/cars",
+        children: [
+          {
+            index: true,
+            element: <Cars />,
+          },
+          {
+            path: "add",
+            element: <CarsAddOrEdit />,
+          },
+          {
+            path: ":id/edit",
+            element: <CarsAddOrEdit />,
+          },
+        ],
+      },
     ],
   },
   {
@@ -51,10 +71,16 @@ export const router = createBrowserRouter([
   },
   {
     path: "registration",
-    element: <Registration />
+    element: (
+      <RequireGuest>
+        <Registration />
+    </RequireGuest>
+    )
   },
   {
     path: "*",
     element: <NotFound />,
   },
+
+  
 ]);

@@ -23,21 +23,20 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
-const Drives = () => {
-  const [drivers, setDrivers] = useState([]);
-  console.log("🚀 ~ Drives ~ drivers:", drivers)
-
+const Cars = () => {
+  const [cars, setCars] = useState([]);
+  console.log("🚀 ~ Cars ~ cars:", cars)
 
   const getAllUsers = async() =>{
-   const res = await axiosClient('/api/company/drivers')
-   setDrivers(res.data.data);
+   const res = await axiosClient('/api/company/cars')
+   setCars(res.data.data);
   }
   useEffect(() => {
     getAllUsers();
   }, []);
 
   const deleteUserData = async (id) => {
-    await axiosClient.delete(`/api/company/drivers/${id}`)
+    await axiosClient.delete(`/api/company/cars/${id}`)
     getAllUsers()
   };
 
@@ -46,31 +45,30 @@ const Drives = () => {
        <div className="ml-64 pr-46 bg-white rounded-lg shadow dark:border dark:bg-yellow-500 dark:border-yellow-400">
         <div className="p-6 space-y-4 sm:m-6">
       <div>
-     <h1 className="text-center items-center text-white bg-yellow-500 w-64 h-6 rounded-lg">Drivers Details</h1>
+     <h1 className="text-center items-center text-white bg-yellow-500 w-64 h-6 rounded-lg">Cars Details</h1>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead> Name </TableHead>
-            <TableHead> Username </TableHead>
-            <TableHead> Phone Number </TableHead>
-            <TableHead> Drvier License Number </TableHead>
+            <TableHead> Vehicle Model </TableHead>
+            <TableHead> Vehicle Registration Certificate </TableHead>
+            <TableHead> Vehicle Plate Number </TableHead>
+            <TableHead> Driver ID </TableHead>
             <TableHead> </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {drivers.map((user, index) => (
+          {cars.map((user, index) => (
             <TableRow key={index}>
-              <TableCell> {user.name} </TableCell> 
-              <TableCell> {user.username} </TableCell>
-              <TableCell> {user.phone_number} </TableCell>
-              <TableCell> {user.driver_license_number} </TableCell>
+              <TableCell> {user.vehicle_model} </TableCell> 
+              <TableCell> {user.vehicle_registration_certificate} </TableCell>
+              <TableCell> {user.vehicle_plate_number} </TableCell>
+              <TableCell> {user.driver_id} </TableCell>
               <TableCell>
                 <div className="flex gap-2">
                   <Link
-                  to={`/drives/${user.id}/edit`}
+                  to={`/cars/${user.id}/edit`}
                   >
                   <Button variant="yellow"> Edit </Button></Link>
-      
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="destructive">Delete </Button>
@@ -103,4 +101,4 @@ const Drives = () => {
   );
 };
 
-export default Drives;
+export default Cars;
